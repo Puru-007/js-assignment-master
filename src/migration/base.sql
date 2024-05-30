@@ -35,6 +35,16 @@ create table if not exists mydb.matches
     foreign key (tourId) references tours(id)
 );
 
+create table if not exists mydb.news (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    matchId INT NULL,
+    tourId INT NULL,
+    FOREIGN KEY (matchId) REFERENCES matches(id),
+    FOREIGN KEY (tourId) REFERENCES tours(id)
+);
+
 -- seed data
 insert ignore into mydb.sports (id, name) values (1, 'Cricket');
 insert ignore into mydb.sports (id, name) values (2, 'Football');
@@ -55,3 +65,26 @@ insert ignore into mydb.matches (name, tourId, format, startTime, endTime) value
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-12 10:00:00', '2023-06-12 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-14 10:00:00', '2023-06-14 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('KER vs JFC', 4, 'soccer', '2022-04-09 18:00:00', '2022-04-09 23:00:00');
+
+
+-- Insert news related to a specific match
+INSERT INTO mydb.news (title, description, matchId, tourId)
+VALUES 
+('Match 1: Exciting Finish!', 'Match 1 concluded with a thrilling finish that kept fans on the edge of their seats.', 1, 1),
+('Match 2: Record-breaking Performance!', 'Match 2 witnessed a record-breaking performance by the star player.', 2, 1);
+
+-- Insert news related to a tour
+INSERT INTO mydb.news (title, description, tourId)
+VALUES 
+('Tour 1: Opening Ceremony Highlights', 'The opening ceremony of Tour 1 was a grand spectacle with performances by famous artists.', 1),
+('Tour 2: Mid-Tournament Analysis', 'Midway through Tour 2, teams are gearing up for the knockout stages.', 2);
+
+-- Insert news that only belongs to a tour and not a specific match
+INSERT INTO mydb.news (title, description, tourId)
+VALUES 
+('Tour 3: All Teams Ready', 'All teams are set and ready for the start of Tour 3.', 3);
+
+-- Insert news related to another match
+INSERT INTO mydb.news (title, description, matchId, tourId)
+VALUES 
+('Match 3: Defensive Masterclass', 'Match 3 was a display of defensive brilliance by both teams.', 3, 2);
