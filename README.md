@@ -1,3 +1,9 @@
+# Fancode Assignment
+## My Contact Details
+Ph - +91 9503896133
+Email - purveshpatil660@gmail.com
+
+
 # js-assignment
 ````
 instructions.txt has the instructions to run the service
