@@ -17,7 +17,6 @@ module.exports = function(app) {
                 cursor: req.query.cursor
             };
             const result = await Tour.getMatchesByTourName(params);
-            console.log("Res" + result);
             return res.json(result);
         } catch (error) {
             return next(error);

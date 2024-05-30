@@ -18,9 +18,6 @@ const getMatchesByTourName = async (name, limit, cursor) => {
 
     statement += ' ORDER BY matches.id ASC LIMIT ?';
     queryParams.push(limit);
-    
-    console.log(statement);
-    console.log(queryParams);
 
     return await mysql.query(statement, queryParams);
 }

@@ -10,14 +10,13 @@ const getAllSportsToursAndMatches = async () => {
         }
         if (!res[sportName][tourName]) {
             res[sportName][tourName] = [];
-        }
-        // res[sportName][tourName].push(matchName);
+        }        
         res[sportName][tourName].push({
-                        id: match.id,
-                        startTime: match.startTime,
-                        format: match.format,
-                        matchName: match.matchName
-                    });
+            id: match.id,
+            startTime: match.startTime,
+            format: match.format,
+            matchName: match.matchName
+        });
     });
     return res;
 }

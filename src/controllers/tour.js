@@ -14,7 +14,6 @@ const getMatchesByTourName = async params => {
     const matches = await Tour.getMatchesByTourName(name, parseInt(limit), cursor);
     let nextCursor = null;
 
-    console.log("Matches- " + matches.length)
     if (matches.length > 0) {
         nextCursor = matches[matches.length - 1].id;
     }
